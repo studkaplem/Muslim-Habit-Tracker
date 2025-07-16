@@ -18,9 +18,9 @@ target/
 *.iws
 *.iml
 *.ipr
-application.properties
 *.class
-roPrayertimes.json
+src/main/resources/roPrayertimes.json
+src/test/resources/application.properties
 
 ### NetBeans ###
 /nbproject/private/
