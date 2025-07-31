@@ -20,7 +20,7 @@ public class PrayertimesController {
 
     /**
      * Endpunkt zum Abrufen aller Gebetszeiten für eine bestimmte Stadt.
-     * Beispiel-URL: GET http://localhost:8080/api/gebetszeiten/Aachen
+     * Beispiel-URL: GET http://localhost:8080/api/prayertimes/Aachen
      * @param cityName Der Name der Stadt (aus dem URL-Pfad).
      * @return Eine ResponseEntity mit der Map der Gebetszeiten oder 404 Not Found.
      */

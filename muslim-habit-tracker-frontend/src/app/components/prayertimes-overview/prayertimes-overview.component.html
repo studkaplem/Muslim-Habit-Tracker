@@ -1,0 +1,48 @@
+<div class="prayertimes-container">
+  <h2>Gebetszeiten für {{ city }} - {{ currentDate }}</h2>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="currentPrayerTimes; else noData">
+    <table>
+      <thead>
+        <tr>
+          <th>Gebet</th>
+          <th>Zeit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Fajr</td>
+          <td>{{ currentPrayerTimes.Fajr }}</td>
+        </tr>
+        <tr>
+          <td>Sunrise</td>
+          <td>{{ currentPrayerTimes.Sunrise }}</td>
+        </tr>
+        <tr>
+          <td>Dhuhr</td>
+          <td>{{ currentPrayerTimes.Dhuhr }}</td>
+        </tr>
+        <tr>
+          <td>Asr</td>
+          <td>{{ currentPrayerTimes.Asr }}</td>
+        </tr>
+        <tr>
+          <td>Maghrib</td>
+          <td>{{ currentPrayerTimes.Maghrib }}</td>
+        </tr>
+        <tr>
+          <td>Isha</td>
+          <td>{{ currentPrayerTimes.Isha }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #noData>
+    <p *ngIf="!errorMessage">Lade Gebetszeiten...</p>
+  </ng-template>
+
+  </div>

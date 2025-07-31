@@ -32,9 +32,8 @@ public class PrayertimesService {
         try (InputStream is = prayertimesResource.getInputStream()) {
             // TypeReference wird benötigt, um komplexe generische Typen (Map von Map von Gebetszeit)
             // korrekt von Jackson deserialisieren zu lassen.
-            Map<String, Map<String, Prayertime>> loadedData = objectMapper.readValue(is, new TypeReference<>() {
-            });
-            allPrayertimesCache.putAll(loadedData); // Füge geladene Daten zum Cache hinzu
+            Map<String, Map<String, Prayertime>> loadedData = objectMapper.readValue(is, new TypeReference<>() {});
+            allPrayertimesCache.putAll(loadedData);
             System.out.println("Gebetszeiten erfolgreich aus gebetszeiten.json geladen!");
         } catch (IOException e) {
             System.err.println("Fehler beim Laden der Gebetszeiten-Datei: " + e.getMessage());
