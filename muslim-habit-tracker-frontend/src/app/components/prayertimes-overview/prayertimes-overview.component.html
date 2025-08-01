@@ -1,12 +1,8 @@
-<div class="prayertimes-container">
-  <h2>Gebetszeiten für {{ city }} - {{ currentDate }}</h2>
+<div class="gebetszeiten-container">
+  <h2 style="text-align: center;">Gebetszeiten für {{ city }} - {{ getFormattedDate(dateDisplay) }}</h2>
 
-  <div *ngIf="errorMessage" class="error-message">
-    {{ errorMessage }}
-  </div>
-
-  <div *ngIf="currentPrayerTimes; else noData">
-    <table>
+  <div *ngIf="currentPrayerTimes; else loadingData">
+    <table class="centered-table">
       <thead>
         <tr>
           <th>Gebet</th>
@@ -14,35 +10,19 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Fajr</td>
-          <td>{{ currentPrayerTimes.Fajr }}</td>
-        </tr>
-        <tr>
-          <td>Sunrise</td>
-          <td>{{ currentPrayerTimes.Sunrise }}</td>
-        </tr>
-        <tr>
-          <td>Dhuhr</td>
-          <td>{{ currentPrayerTimes.Dhuhr }}</td>
-        </tr>
-        <tr>
-          <td>Asr</td>
-          <td>{{ currentPrayerTimes.Asr }}</td>
-        </tr>
-        <tr>
-          <td>Maghrib</td>
-          <td>{{ currentPrayerTimes.Maghrib }}</td>
-        </tr>
-        <tr>
-          <td>Isha</td>
-          <td>{{ currentPrayerTimes.Isha }}</td>
+        <tr *ngFor="let entry of currentPrayerTimes | keyvalue">
+          <td>{{ entry.key }}</td>
+          <td>{{ entry.value }}</td>
         </tr>
       </tbody>
     </table>
+    <div class="date-navigation" style="text-align: center; margin-top: 20px;">
+      <button (click)="goToToday()" [disabled]="isToday()">Heute</button>
+      <button (click)="skipForward()">Nächster Tag &raquo;</button>
+    </div>
   </div>
-  <ng-template #noData>
+
+  <ng-template #loadingData>
     <p *ngIf="!errorMessage">Lade Gebetszeiten...</p>
   </ng-template>
-
-  </div>
+</div>
