@@ -10,9 +10,29 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let entry of currentPrayerTimes | keyvalue">
-          <td>{{ entry.key }}</td>
-          <td>{{ entry.value }}</td>
+        <tr>
+          <td>Fajr</td>
+          <td>{{ currentPrayerTimes.Fajr }}</td>
+        </tr>
+        <tr>
+          <td>Sunrise</td>
+          <td>{{ currentPrayerTimes.Sunrise }}</td>
+        </tr>
+        <tr>
+          <td>Dhuhr</td>
+          <td>{{ currentPrayerTimes.Dhuhr }}</td>
+        </tr>
+        <tr>
+          <td>Asr</td>
+          <td>{{ currentPrayerTimes.Asr }}</td>
+        </tr>
+        <tr>
+          <td>Maghrib</td>
+          <td>{{ currentPrayerTimes.Maghrib }}</td>
+        </tr>
+        <tr>
+          <td>Isha</td>
+          <td>{{ currentPrayerTimes.Isha }}</td>
         </tr>
       </tbody>
     </table>
