@@ -1,48 +1,60 @@
-<div class="gebetszeiten-container">
-  <h2 style="text-align: center;">Gebetszeiten für {{ city }} - {{ getFormattedDate(dateDisplay) }}</h2>
+<div class="container my-5">
+  <div class="card shadow-sm">
+    <div class="card-header bg-success text-white text-center">
+      <h2 class="card-title mb-0">Gebetszeiten für {{ city }} - {{ getFormattedDate(dateDisplay) }}</h2>
+    </div>
+    <div class="card-body">
+      <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+        {{ errorMessage }}
+      </div>
 
-  <div *ngIf="currentPrayerTimes; else loadingData">
-    <table class="centered-table">
-      <thead>
-        <tr>
-          <th>Gebet</th>
-          <th>Zeit</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Fajr</td>
-          <td>{{ currentPrayerTimes.Fajr }}</td>
-        </tr>
-        <tr>
-          <td>Sunrise</td>
-          <td>{{ currentPrayerTimes.Sunrise }}</td>
-        </tr>
-        <tr>
-          <td>Dhuhr</td>
-          <td>{{ currentPrayerTimes.Dhuhr }}</td>
-        </tr>
-        <tr>
-          <td>Asr</td>
-          <td>{{ currentPrayerTimes.Asr }}</td>
-        </tr>
-        <tr>
-          <td>Maghrib</td>
-          <td>{{ currentPrayerTimes.Maghrib }}</td>
-        </tr>
-        <tr>
-          <td>Isha</td>
-          <td>{{ currentPrayerTimes.Isha }}</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="date-navigation" style="text-align: center; margin-top: 20px;">
-      <button (click)="goToToday()" [disabled]="isToday()">Heute</button>
-      <button (click)="skipForward()">Nächster Tag &raquo;</button>
+      <div *ngIf="currentPrayerTimes; else loadingData">
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Gebet</th>
+              <th scope="col">Zeit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Fajr</td>
+              <td>{{ currentPrayerTimes.Fajr }}</td>
+            </tr>
+            <tr>
+              <td>Sunrise</td>
+              <td>{{ currentPrayerTimes.Sunrise }}</td>
+            </tr>
+            <tr>
+              <td>Dhuhr</td>
+              <td>{{ currentPrayerTimes.Dhuhr }}</td>
+            </tr>
+            <tr>
+              <td>Asr</td>
+              <td>{{ currentPrayerTimes.Asr }}</td>
+            </tr>
+            <tr>
+              <td>Maghrib</td>
+              <td>{{ currentPrayerTimes.Maghrib }}</td>
+            </tr>
+            <tr>
+              <td>Isha</td>
+              <td>{{ currentPrayerTimes.Isha }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="d-flex justify-content-center mt-4">
+          <button class="btn btn-outline-secondary me-2" (click)="goToToday()" [disabled]="isToday()">Heute</button>
+          <button class="btn btn-success" (click)="skipForward()">Nächster Tag &raquo;</button>
+        </div>
+      </div>
+      <ng-template #loadingData>
+        <div class="text-center text-muted">
+          <div class="spinner-border text-success" role="status">
+            <span class="visually-hidden">Lade Gebetszeiten...</span>
+          </div>
+        </div>
+      </ng-template>
     </div>
   </div>
-
-  <ng-template #loadingData>
-    <p *ngIf="!errorMessage">Lade Gebetszeiten...</p>
-  </ng-template>
 </div>
